@@ -2,7 +2,7 @@
 
 ##To Do##
 - []HTML/CSS
-- []Coverflow for portfolio as banner using http://www.jacksasylum.eu/ContentFlow/
+- []Coverflow for portfolio as banner using https://github.com/luwes/js-cover-flow
 - []Nav bar under coverflow
 - []Parallax for each of the portfolio sections
 - []Contact Me

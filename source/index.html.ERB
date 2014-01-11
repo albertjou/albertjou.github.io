@@ -1,0 +1,147 @@
+---
+title: Albert Jou Portfolio
+body_class: index
+---
+<div class="header">
+  <!-- <div class="title"> -->
+  <div class="cbp-af-header">
+    <div class="cbp-af-inner">
+      <!-- <p class="bubble">Hello, I am</p> -->
+      <h1>Albert</h1>
+      <nav>
+          <a href="#">Broccoli</a>
+          <a href="#">Almonds</a>
+          <a href="#">Pears</a>
+          <a href="#">Oranges</a>
+      </nav>
+    </div>
+</div>
+<div class="spacer"></div>
+    <!-- <h1>Albert Jou</h1> -->
+  <!-- </div> -->
+  <div id="container"></div>
+  <div class="navbar">
+
+  </div>
+</div>
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>-->
+  <script src="coverflow.js"></script>
+  <script>
+  console.log("Coverflow loaded");
+    function reset() {
+
+      coverflow('container').remove();
+
+      //$('#container').coverflow({
+      coverflow('container').setup({
+        width: '100%',
+        item: 1,
+        mousewheel: true,
+        // mode: 'flash',
+        backgroundcolor: '53b78d',
+        // backgroundopacity: 0,
+        // wmode: 'transparent',
+        gradientcolor: '4b8ccb',
+        // showduration: true,
+        // playlist: 'playlist.json',
+        //playlist: 'http://api.flickr.com/services/feeds/groups_pool.gne?id=807213@N20&format=json&jsoncallback=?',
+        //route: {
+        //  playlist: 'items',
+        //  image: 'media.m'
+        //},
+        playlist: [
+         {
+           "title": "NeighbourFood",
+           "description": "Find a home-cooked meal near you",
+           "image": "http://d3el35u4qe4frz.cloudfront.net/eawtAP1q-720.jpg",
+           "link": "http://www.neighbourfood.com/",
+           "duration": "183"
+         },
+         {
+           "title": "Customised Acoustic",
+           "description": "Create a guitar that expresses who you are",
+           "image": "http://d3el35u4qe4frz.cloudfront.net/njZMLMwy-720.jpg",
+           "duration": "782"
+         },
+         {
+           "title": "Do It For Free",
+           "description": "Freelancer for non-profits.",
+           "image": "http://d3el35u4qe4frz.cloudfront.net/Vg7cPUdl-720.jpg"
+         }
+        ],
+        height: 500,
+        coverwidth: 360,
+        coverheight: 300,
+        fixedsize: false,
+        textstyle: ".coverflow-text{color:#f1f1f1;text-align:center;font-family: 'News Cycle bold', sans-serif;;} .coverflow-text h1{font-size:1.5em;font-weight:normal;line-height:2em;} .coverflow-text h1{font-size:1.2em;font-weight:normal;} .coverflow-text a{color:#0000EE;}",
+        textoffset: 100,
+      })
+      .on('ready', function() {
+
+        this.on('focus', function(index) {
+          document.getElementById('focusindex').innerHTML = index;
+        });
+
+        this.on('click', function(index, link) {
+          document.getElementById('clickindex').innerHTML = index;
+
+          console.log(link);
+          if (link) {
+            window.open(link, '_blank');
+          }
+        });
+      });
+    }
+
+    reset();
+
+  </script>
+  <script>
+    var cbpAnimatedHeader = (function() {
+
+    var docElem = document.documentElement,
+        header = document.querySelector( '.cbp-af-header' ),
+        didScroll = false,
+        changeHeaderOn = 300;
+
+    function init() {
+        window.addEventListener( 'scroll', function( event ) {
+            if( !didScroll ) {
+                didScroll = true;
+                setTimeout( scrollPage, 250 );
+            }
+        }, false );
+    }
+
+    function scrollPage() {
+        var sy = scrollY();
+        if ( sy >= changeHeaderOn ) {
+            classie.add( header, 'cbp-af-header-shrink' );
+        }
+        else {
+            classie.remove( header, 'cbp-af-header-shrink' );
+        }
+        didScroll = false;
+    }
+
+    function scrollY() {
+        return window.pageYOffset || docElem.scrollTop;
+    }
+
+    init();
+
+})();
+  </script>
+<div style="width:480px;" class="invisible">
+  <div style="float:right;">Focused: <b id="focusindex">0</b> | Clicked: <b id="clickindex">0</b></div>
+  <p>
+    <a href="javascript:;" onclick="coverflow().left();">Left</a> - <a href="javascript:;" onclick="coverflow().right();">Right</a>
+  </p>
+  <p>
+    <a href="javascript:;" onclick="coverflow().prev();">Previous</a> - <a href="javascript:;" onclick="coverflow().next();">Next</a>
+  </p>
+  <p>
+    <input id="toval" value="0" size="1"> <a href="javascript:;" onclick="coverflow().to(document.getElementById('toval').value);">To</a>
+  </p>
+</div>
+
